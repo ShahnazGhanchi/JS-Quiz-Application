@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+#quizForm {
+  max-width: 600px;
+  margin: auto;
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+}
+
+/* Question hover effect */
+.hover-question {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.hover-question:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Radio buttons */
+input[type="radio"] {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+/* Selected option highlight */
+input[type="radio"]:checked + label {
+  font-weight: bold;
+  color: #198754; /* Bootstrap green */
+}
+
+/* Correct answer background */
+.correct {
+  background: #d4edda !important; /* light green */
+  border-color: #198754 !important;
+}
+
+/* Incorrect answer background */
+.incorrect {
+  background: #f8d7da !important; /* light red */
+  border-color: #dc3545 !important;
+}
+
+/* Result text */
+#result {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+#result {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.6s ease-in-out;
+}
+
+#result.show {
+  opacity: 1;
+  transform: scale(1);
+}
