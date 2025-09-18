@@ -9,9 +9,15 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-    <section id="quiz" class="container py-5" >
+  <div class="text-center mb-4">
+    <button id="startBtn" class="btn btn-primary px-4 ">Start Quiz</button>
+  </div>
+
+    <section id="quiz" class="container py-5" style="display:none;" >
+      <h2 id="timer">Time Left: 50s</h2>
+
     <h2 class="text-center text-dark fw-bold mb-4">"Let’s See How Well You Know JavaScript 😉"</h2>
-    
+   
     <form id="quizForm" class="p-4 bg-light rounded shadow" novalidate>
       <!-- Question 1 -->
       <fieldset class="mb-4 p-3 border rounded hover-question">

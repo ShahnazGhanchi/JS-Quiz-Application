@@ -74,8 +74,37 @@ if (score === total) {
   result.innerHTML += "<br>😟 Try again!";
 }
 }
-// document.getElementById("startBtn").addEventListener("click", () => {
-//   document.getElementById("quiz").style.display = "block";
-//   document.getElementById("startBtn").style.display = "none"; // button hide
-// });
+///////////////////////////////
+let timeLeft = 50;
+let timerId;
+
+document.getElementById("startBtn").addEventListener("click", () => {
+ 
+  document.getElementById("quiz").style.display = "block";
+
+ 
+  timeLeft = 50;
+  startTimer();
+});
+
+function startTimer() {
+  let timerElement = document.getElementById("timer");
+
+  timerId = setInterval(() => {
+    timeLeft--;
+    timerElement.textContent = "Time Left: " + timeLeft + "s";
+
+    if (timeLeft <= 0) {
+      clearInterval(timerId);
+      timerElement.textContent = "⏰ Time’s up!";
+      endQuiz();
+    }
+  }, 1000);
+}
+
+function endQuiz() {
+  alert("Game Over! Time’s up!");
+  
+}
+
 
