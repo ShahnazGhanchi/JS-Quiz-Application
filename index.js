@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const startBtn = document.getElementById("startBtn");
   const quizSection = document.getElementById("quiz");
   const result = document.getElementById("result");
-
+  const submitBtn = document.getElementById("submitBtn");
   let timeLeft = 50;
   let timerId;
 
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let date = now.getDate();
     let month = months[now.getMonth()];
     let year = now.getFullYear();
-    let fullDate = day + ", " + date + " " + month + " " + year;
+    let fullDate = `${day}, ${date} ${month} ${year}`;
 
     const dateDiv = document.createElement("h4");
     dateDiv.id = "dateTime";
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ✅ Check quiz answers
-  document.getElementById("submitBtn").addEventListener("click", checkQuiz);
+  submitBtn.addEventListener("click", checkQuiz);
 
   function checkQuiz() {
     const answers = {
@@ -74,13 +74,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let score = 0;
     let total = Object.keys(answers).length;
 
+    // remove old highlights
     document.querySelectorAll(".hover-question").forEach(div => {
       div.classList.remove("correct", "incorrect");
     });
 
     for (let q in answers) {
-      let selected = document.querySelector(`input[name="${q}"]:checked`);
-      let questionDiv = document.querySelector(`input[name="${q}"]`).closest(".hover-question");
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      const questionDiv = document.querySelector(`input[name="${q}"]`).closest(".hover-question");
 
       if (selected) {
         if (selected.value === answers[q]) {
@@ -94,16 +95,23 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    // ✅ Show result
     result.innerHTML = `You scored <b>${score}</b> out of <b>${total}</b>`;
+    result.classList.add("show");
 
+    // ✅ Confetti effects
     if (score === total) {
       result.style.color = "blue";
       result.innerHTML += "<br>🎉 Excellent!";
-      confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+      if (typeof confetti === "function") {
+        confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+      }
     } else if (score >= total / 2) {
       result.style.color = "orange";
       result.innerHTML += "<br>🙂 Good effort!";
-      confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+      if (typeof confetti === "function") {
+        confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+      }
     } else {
       result.style.color = "red";
       result.innerHTML += "<br>😟 Try again!";
