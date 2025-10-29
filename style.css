@@ -6,7 +6,7 @@
 }
 
 body {
-      /* background: linear-gradient(135deg, #74ABE2, #5563DE)!important; */
+      background: linear-gradient(135deg, #74ABE2, #5563DE)!important;
       min-height: 100vh; 
       display: flex;
       justify-content: center;
@@ -17,10 +17,10 @@ body {
       text-align: center;
     }
     .card {
-  background: rgba(112, 15, 223, 0.15);
+  
   border: none;
   backdrop-filter: blur(12px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   padding: 60px 40px;
   color: #fff;
@@ -85,19 +85,19 @@ input[type="radio"] {
 /* Selected option highlight */
 input[type="radio"]:checked + label {
   font-weight: bold;
-  color: #198754; /* Bootstrap green */
+  /* color: #198754; Bootstrap green */
 }
 
 /* Correct answer background */
-.correct {
+/* .correct {
   background: #d4edda !important; /* light green */
-  border-color: #198754 !important;
-}
+   /* border-color: #198754 !important; */
+  
 
 /* Incorrect answer background */
 .incorrect {
   background: #f8d7da !important; /* light red */
-  border-color: #dc3545 !important;
+  /* border-color: #dc3545 !important; */
 }
 
 /* Result text */
